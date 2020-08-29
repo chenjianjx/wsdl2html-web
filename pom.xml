@@ -9,7 +9,7 @@
 	<name>wsdl2html-web</name>
 
 	<properties>
-		<spring.version>3.2.5.RELEASE</spring.version>
+		<spring.version>4.3.5.RELEASE</spring.version>
 		<junit.version>4.9</junit.version>
 		<jdk.version>1.8</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -52,13 +52,8 @@
 			<version>1.2.16</version>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>1.1.36</version>
-		</dependency>
 
-		<!-- Spring 3 dependencies -->
+		<!-- Spring   dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>

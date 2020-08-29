@@ -9,5 +9,5 @@
 
 ## URL Input Test
 * There is a default url on rendering
-* Click the default it, expecting it goes
+* Click the default it, expecting it goes away
 * Input another url and click it, expecting it still there

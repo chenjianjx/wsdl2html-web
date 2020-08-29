@@ -18,8 +18,6 @@
 	      <ul class="nav navbar-nav navbar-right">
 	      	 
 		      	<li><a href="http://www.github.com/chenjianjx/wsdl2html" target="_blank">Github</a></li>
-<%--		      	<li><a href="${pageContext.request.contextPath}/help/faq#issue">Report an Issue</a></li>--%>
-		      	<%-- <li><a href="${pageContext.request.contextPath}/help/faq">FAQ</a></li> --%>
 		      
 	      </ul>             
         </div><!--/.nav-collapse -->

@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
 	<%@ include file="/decorators/common/mostOfHead.jsp"%>
-    <title>Wsdl2html</title>
+    <title>wsdl2html</title>
 </head>
 
 <body>
@@ -23,15 +23,11 @@
 			<div class="form-group">
 
 				<div class="form-group" style="padding-top: 60px">
-					<div class="col-sm-2"></div>
-					<div class="col-sm-8">
+
+					<div class="col-sm-12">
 						<form:input type="text" class="form-control" path="wsdlUrl"
 							placeholder="Input a wsdl url" onClick="clearUrlFieldIfNeeded()"
 							id="wsdlUrl" />
-					</div>
-					<div class="col-sm-2">
-						<a href="${pageContext.request.contextPath}/help/faq#intranet">WSDL
-							Private?</a>
 					</div>
 				</div>
 
@@ -46,7 +42,7 @@
 		<div style="padding-top: 60px">
 			<hr />
 			 
-				<div class="text-center">© 2016 Wsdl2html</div>
+				<div class="text-center">wsdl2html</div>
 		 
 		</div>
 	</div>
@@ -64,18 +60,7 @@
 			}
 		}
 	</script>
-	
-	
-	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	
-	  ga('create', 'UA-60175901-2', 'auto');
-	  ga('send', 'pageview');
-	
-	</script>	
+
 
 </body>
 </html>

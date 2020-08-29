@@ -1,10 +1,6 @@
 package org.jaxws.wsdl2htmlweb.entry.webcontroller.gen;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import javax.servlet.http.HttpServletRequest;
-
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.jaxws.wsdl2bytecodes.service.WsdlImportException;
@@ -17,82 +13,89 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
+import javax.servlet.http.HttpServletRequest;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 
 @Controller
 @RequestMapping(value = "/")
 public class GenerationController {
-	
-	
 
-	@RequestMapping(value = { "", "/" })
-	public String form(ModelMap model) {
-		GenerationCommand command = new GenerationCommand();
-		model.addAttribute("command", command);
-		return "/gen/form";
-	}
 
-	@RequestMapping(value = "/doGen", method = RequestMethod.POST)
-	public String submitForm(HttpServletRequest request, ModelMap model,
-			@ModelAttribute("command") GenerationCommand command) {
+    @RequestMapping(value = {"", "/"})
+    public String form(HttpServletRequest request, ModelMap model) {
+        GenerationCommand command = new GenerationCommand();
+        String requestUrlBase = request.getRequestURL().toString();
+        String defaultWsdl = StringUtils.stripEnd(requestUrlBase, "/") + "/assets/static/sample.wsdl";
+        command.setDefaultWsdl(defaultWsdl);
 
-		String formPage = "/gen/form";
+        if (StringUtils.isBlank(command.getWsdlUrl())) {
+            command.setWsdlUrl(defaultWsdl);
+        }
 
-		if (command.getWsdlUrl() == null) {
-			WwModelUtils.addError(model, "Please input a wsdl url.");
-			return formPage;
-		}
+        model.addAttribute("command", command);
+        return "/gen/form";
+    }
 
-		try {
-			new URL(command.getWsdlUrl());
-		} catch (MalformedURLException e) {
-			WwModelUtils.addError(model, "Please input a valid wsdl url.");
-			return formPage;
-		}
+    @RequestMapping(value = "/doGen", method = RequestMethod.POST)
+    public String submitForm(ModelMap model,
+                             @ModelAttribute("command") GenerationCommand command) {
 
-		String htmlContent;
-		try {
-			htmlContent = Wsdl2Html.generateHtml(command.getWsdlUrl());
-			model.put("result", htmlContent);
-		} catch (WsdlImportException e) {
-			WwModelUtils.addError(model, new WwError("Conversion failed because ", e.getMessage()));
-			return formPage;
-		}
+        String formPage = "/gen/form";
 
-		return "/gen/result";
+        if (command.getWsdlUrl() == null) {
+            WwModelUtils.addError(model, "Please input a wsdl url.");
+            return formPage;
+        }
 
-	}
+        try {
+            new URL(command.getWsdlUrl());
+        } catch (MalformedURLException e) {
+            WwModelUtils.addError(model, "Please input a valid wsdl url.");
+            return formPage;
+        }
 
-	public static final class GenerationCommand {
+        String htmlContent;
+        try {
+            htmlContent = Wsdl2Html.generateHtml(command.getWsdlUrl());
+            model.put("result", htmlContent);
+        } catch (WsdlImportException e) {
+            WwModelUtils.addError(model, new WwError("Conversion failed because ", e.getMessage()));
+            return formPage;
+        }
 
-		private static final String DEFAULT_WSDL = "http://www.wsdl2html.com/assets/static/sample.wsdl";
-		private String wsdlUrl = DEFAULT_WSDL;
+        return "/gen/result";
 
-		public String getWsdlUrl() {
-			return wsdlUrl;
-		}
+    }
 
-		public void setWsdlUrl(String wsdlUrl) {
-			this.wsdlUrl = wsdlUrl;
-		}
-		
-		public String getDefaultWsdl(){
-			return DEFAULT_WSDL;
-		}
+    public static final class GenerationCommand {
 
-		@Override
-		public String toString() {
-			return ToStringBuilder.reflectionToString(this,
-					ToStringStyle.SHORT_PREFIX_STYLE);
-		}
-	}
+        private String wsdlUrl;
+        private String defaultWsdl;
 
-	@SuppressWarnings("unused")
-	private String toJson(Object object) {
-		return JSON.toJSONString(object,
-				SerializerFeature.DisableCircularReferenceDetect,
-				SerializerFeature.BrowserCompatible);
-	}
+        public String getWsdlUrl() {
+            return wsdlUrl;
+        }
+
+        public void setWsdlUrl(String wsdlUrl) {
+            this.wsdlUrl = wsdlUrl;
+        }
+
+        public String getDefaultWsdl() {
+            return defaultWsdl;
+        }
+
+        public void setDefaultWsdl(String defaultWsdl) {
+            this.defaultWsdl = defaultWsdl;
+        }
+
+        @Override
+        public String toString() {
+            return ToStringBuilder.reflectionToString(this,
+                    ToStringStyle.SHORT_PREFIX_STYLE);
+        }
+    }
+
 
 }
