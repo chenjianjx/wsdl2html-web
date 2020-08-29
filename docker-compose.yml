@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    container_name: wsdl2html-web
+
+
+  dockerhost:  #See:  https://github.com/qoomon/docker-host
+    image: qoomon/docker-host
+    cap_add: [ 'NET_ADMIN', 'NET_RAW' ]
+    restart: on-failure
+    container_name: wsdl2html-web-dockerhost
