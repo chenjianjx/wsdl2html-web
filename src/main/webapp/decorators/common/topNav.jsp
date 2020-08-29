@@ -9,7 +9,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="${pageContext.request.contextPath}/">Wsdl2html</a>
+          <a class="navbar-brand" href="${pageContext.request.contextPath}/">wsdl2html</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-left">                       
@@ -17,8 +17,8 @@
           </ul>
 	      <ul class="nav navbar-nav navbar-right">
 	      	 
-		      	<li><a href="http://www.github.com/chenjianjx/wsdl2html">Github</a></li>             
-		      	<li><a href="${pageContext.request.contextPath}/help/faq#issue">Report an Issue</a></li>
+		      	<li><a href="http://www.github.com/chenjianjx/wsdl2html" target="_blank">Github</a></li>
+<%--		      	<li><a href="${pageContext.request.contextPath}/help/faq#issue">Report an Issue</a></li>--%>
 		      	<%-- <li><a href="${pageContext.request.contextPath}/help/faq">FAQ</a></li> --%>
 		      
 	      </ul>             

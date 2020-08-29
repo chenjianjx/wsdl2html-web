@@ -14,10 +14,10 @@
 		<div class="container">
 			<%@ include file="/decorators/common/errors.jsp"%>
 			<decorator:body />
-			<hr />
-			<footer>
-				<div class="text-center">© 2016 Wsdl2html</div>
-			</footer>
+<%--			<hr />--%>
+<%--			<footer>--%>
+<%--				<div class="text-center">© 2016 wsdl2html</div>--%>
+<%--			</footer>--%>
 		</div>
 	
 	
