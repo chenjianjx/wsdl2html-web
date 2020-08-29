@@ -5,7 +5,7 @@
 	<groupId>org.jaxws</groupId>
 	<artifactId>wsdl2html-web</artifactId>
 	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>core-4.2.1-web-1.0.0</version>
 	<name>wsdl2html-web</name>
 
 	<properties>
@@ -13,7 +13,6 @@
 		<junit.version>4.9</junit.version>
 		<jdk.version>1.8</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 	</properties>
 
 

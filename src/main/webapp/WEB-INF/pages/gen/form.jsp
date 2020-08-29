@@ -26,7 +26,7 @@
 
 					<div class="col-sm-12">
 						<form:input type="text" class="form-control" path="wsdlUrl"
-							placeholder="Input a wsdl url" onClick="clearUrlFieldIfNeeded()"
+							placeholder="${command.inputPlaceholder}"
 							id="wsdlUrl" />
 					</div>
 				</div>
@@ -49,17 +49,6 @@
 
 
 	<%@ include file="/decorators/common/js.jsp"%>
-
-	<script>
-		var default_wsdl = '<c:out value="${command.defaultWsdl}"/>';
-
-		function clearUrlFieldIfNeeded() {
-			var field = document.getElementById("wsdlUrl");
-			if (field.value == default_wsdl) {
-				field.value = "";
-			}
-		}
-	</script>
 
 
 </body>

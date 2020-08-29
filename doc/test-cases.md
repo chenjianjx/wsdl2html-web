@@ -7,7 +7,7 @@
 * Invalid URL format 
 
 
-## URL Input Test
-* There is a default url on rendering
-* Click the default it, expecting it goes away
-* Input another url and click it, expecting it still there
+## Docker related test
+* The input placeholder should tell you localhost is the host
+* Run in docker with a localhost url
+* Run in docker with a url that's in the intranet, but not localhost

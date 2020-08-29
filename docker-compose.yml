@@ -2,11 +2,11 @@ version: "3"
 
 services:
 
-  web:
+  app:
     build: .
     ports:
-      - "8080:8080"
-    container_name: wsdl2html-web
+      - "3480:8080"
+    container_name: wsdl2html-web-app
 
 
   dockerhost:  #See:  https://github.com/qoomon/docker-host
