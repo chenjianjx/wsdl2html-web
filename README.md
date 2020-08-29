@@ -12,5 +12,5 @@ Use this file:  [The offical docker-compose.yml in the repo wsdl2html](https://g
 * Note: dockerhost is optional, but without it wsdl2html-web inside the container won't be able to reach wsdl on the host, i.e. http://localhost...?wsdl
 * Note2:  [docker-compose.yml](docker-compose.yml) in this repo is for the developer of this repo. You don't need to touch it unless you want to contribute. 
 
-### Run as docker container
+### Run as a docker container
 Pull the image https://hub.docker.com/repository/docker/chenjianjx/wsdl2html-web and run it
