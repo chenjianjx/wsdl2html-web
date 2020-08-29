@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.2.9-b130926.1035 svn-revision#5f6196f2b90e9460065a4c2f4e30e065b245e51e. --><xs:schema xmlns:tns="https://github.com/chenjianjx/wsdl2html" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="https://github.com/chenjianjx/wsdl2html">
+
+<xs:element name="deletePostById" type="tns:deletePostById"></xs:element>
+
+<xs:element name="deletePostByIdResponse" type="tns:deletePostByIdResponse"></xs:element>
+
+<xs:element name="empty" type="tns:empty"></xs:element>
+
+<xs:element name="emptyResponse" type="tns:emptyResponse"></xs:element>
+
+<xs:element name="getAllPostIdsWithoutOverload" type="tns:getAllPostIdsWithoutOverload"></xs:element>
+
+<xs:element name="getAllPostIdsWithoutOverloadResponse" type="tns:getAllPostIdsWithoutOverloadResponse"></xs:element>
+
+<xs:element name="getAllPosts" type="tns:getAllPosts"></xs:element>
+
+<xs:element name="getAllPostsResponse" type="tns:getAllPostsResponse"></xs:element>
+
+<xs:element name="getAllPostsWithoutOverload" type="tns:getAllPostsWithoutOverload"></xs:element>
+
+<xs:element name="getAllPostsWithoutOverloadResponse" type="tns:getAllPostsWithoutOverloadResponse"></xs:element>
+
+<xs:element name="getPostsByIds" type="tns:getPostsByIds"></xs:element>
+
+<xs:element name="getPostsByIdsResponse" type="tns:getPostsByIdsResponse"></xs:element>
+
+<xs:element name="newPost" type="tns:newPost"></xs:element>
+
+<xs:element name="newPostResponse" type="tns:newPostResponse"></xs:element>
+
+<xs:element name="oldOrEven" type="tns:oldOrEven"></xs:element>
+
+<xs:element name="oldOrEvenResponse" type="tns:oldOrEvenResponse"></xs:element>
+
+<xs:element name="oldToken" nillable="true" type="xs:string"></xs:element>
+
+<xs:element name="refreshToken" type="tns:refreshToken"></xs:element>
+
+<xs:element name="refreshTokenResponse" type="tns:refreshTokenResponse"></xs:element>
+
+<xs:element name="updatePost" type="tns:updatePost"></xs:element>
+
+<xs:element name="updatePostResponse" type="tns:updatePostResponse"></xs:element>
+
+<xs:complexType name="getAllPostIdsWithoutOverload">
+<xs:sequence>
+<xs:element name="operatorUserId" type="xs:long" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllPostIdsWithoutOverloadResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:long" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updatePost">
+<xs:sequence>
+<xs:element name="operatorUserId" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="request" type="tns:updatePostRequest" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updatePostRequest">
+<xs:complexContent>
+<xs:extension base="tns:savePostRequest">
+<xs:sequence>
+<xs:element name="id" type="xs:long"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="savePostRequest" abstract="true">
+<xs:sequence>
+<xs:element name="content" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updatePostResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:singlePostResponse" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="singlePostResponse">
+<xs:complexContent>
+<xs:extension base="tns:abstractResponse">
+<xs:sequence>
+<xs:element name="post" type="tns:post"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="abstractResponse">
+<xs:sequence>
+<xs:element name="errorCode" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="errorMessage" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="post">
+<xs:sequence>
+<xs:element name="id" type="xs:long"></xs:element>
+<xs:element name="userId" type="xs:long"></xs:element>
+<xs:element name="content" type="xs:string"></xs:element>
+<xs:element name="createTime" type="xs:dateTime"></xs:element>
+<xs:element name="firstTenComments" type="tns:comment" minOccurs="0" maxOccurs="unbounded"></xs:element>
+<xs:element name="canDelete" type="xs:boolean" minOccurs="0"></xs:element>
+<xs:element name="canUpdate" type="xs:boolean" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="comment">
+<xs:sequence>
+<xs:element name="id" type="xs:long"></xs:element>
+<xs:element name="userId" type="xs:long"></xs:element>
+<xs:element name="content" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deletePostById">
+<xs:sequence>
+<xs:element name="operatorUserId" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="postId" type="xs:long" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deletePostByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:voidResponse" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="voidResponse">
+<xs:complexContent>
+<xs:extension base="tns:abstractResponse">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="oldOrEven">
+<xs:sequence>
+<xs:element name="number" type="xs:int"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="oldOrEvenResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="newPost">
+<xs:sequence>
+<xs:element name="operatorUserId" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="request" type="tns:newPostRequest" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="newPostRequest">
+<xs:complexContent>
+<xs:extension base="tns:savePostRequest">
+<xs:sequence></xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="newPostResponse">
+<xs:sequence>
+<xs:element name="result" type="tns:singlePostResponse" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPostsByIds">
+<xs:sequence>
+<xs:element name="operatorUserId" type="xs:long" minOccurs="0"></xs:element>
+<xs:element name="postIds" type="xs:long" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPostsByIdsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:postListResponse" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="postListResponse">
+<xs:complexContent>
+<xs:extension base="tns:abstractResponse">
+<xs:sequence>
+<xs:element name="posts" type="tns:post" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="getAllPosts">
+<xs:sequence>
+<xs:element name="operatorUserId" type="xs:long" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllPostsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:postListResponse" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllPostsWithoutOverload">
+<xs:sequence>
+<xs:element name="operatorUserId" type="xs:long" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllPostsWithoutOverloadResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:post" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="empty">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="emptyResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="refreshToken">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="refreshTokenResponse">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+</xs:schema>

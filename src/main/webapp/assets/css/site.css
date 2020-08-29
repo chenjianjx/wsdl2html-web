@@ -1,0 +1,17 @@
+body {
+  padding-top: 50px;
+}
+ 
+.compact-pre{
+    display: block;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: inherit;
+    border: 0px;
+    
+} 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/decorators">
+	<excludes>		
+		<pattern>/assets/*</pattern>	
+		<pattern>*.ico</pattern>			
+		<pattern></pattern>
+		<pattern>/doGen</pattern>
+	</excludes>
+	<decorator name="nonHompage" page="nonHompage.jsp">
+		<pattern>/help/*</pattern>
+	</decorator>
+
+</decorators>
